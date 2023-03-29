@@ -32,4 +32,9 @@ namespace cstm
             }
         }
     }
+
+    vector::~vector()
+    {
+        delete[] mData;
+    }
 }
