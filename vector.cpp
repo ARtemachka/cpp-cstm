@@ -1,4 +1,5 @@
 #include "vector.hh"
+#include <algorithm>
 
 namespace cstm
 {
@@ -12,11 +13,7 @@ namespace cstm
         if (mSize != 0)
         {
             mData = new int[mSize];
-
-            for (size_type i = 0; i < mSize; ++i)
-            {
-                mData[i] = 0;
-            }
+            std::fill(mData, mData + mSize, 0);
         }
     }
 
@@ -25,11 +22,7 @@ namespace cstm
         if (mSize != 0)
         {
             mData = new int[mSize];
-
-            for (size_type i = 0; i < mSize; ++i)
-            {
-                mData[i] = value;
-            }
+            std::fill(mData, mData + mSize, value);
         }
     }
 
