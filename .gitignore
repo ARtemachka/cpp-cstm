@@ -1,2 +1,4 @@
 .vscode/
 build/
+subprojects/googletest-1.13.0
+subprojects/packagecache
