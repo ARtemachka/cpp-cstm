@@ -1,5 +1,7 @@
 # cpp-cstm
 
+[![CI](https://github.com/ARtemachka/cpp-cstm/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ARtemachka/cpp-cstm/actions/workflows/ci.yml)
+
 Custom implementation of C++ std library for learning purpose.
 
 ## Disclaimer
