@@ -12,27 +12,30 @@ jobs:
   
   steps:
 
-    - uses: actions/checkout@v3
+    - name: Checkout the repo
+      uses: actions/checkout@v3
 
-    - uses: actions/setup-python@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
         python-version: '3.11'
     
     - name: Install meson
-    - run: pip3 install meson
+      run: pip3 install meson
 
     - name: Setup meson
-    - run: meson setup build-gcc
+      run: meson setup build-gcc
       env:
         CXX: g++
     
     - name: Compile code
-    - run: meson compile -C build-gcc -v
+      run: meson compile -C build-gcc -v
 
     - name: Run unit tests
-    - run: meson test -C build-gcc -v
+      run: meson test -C build-gcc -v
 
-    - uses: actions/upload-artifact@v3
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
       if: failure()
       with:
         name: Linux_Meson_Testlog
