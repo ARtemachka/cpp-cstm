@@ -12,10 +12,8 @@ jobs:
   
   steps:
 
-    - name: Checkout the repo
     - uses: actions/checkout@v3
 
-    - name: Set up Python
     - uses: actions/setup-python@v4
       with:
         python-version: '3.11'
@@ -34,7 +32,6 @@ jobs:
     - name: Run unit tests
     - run: meson test -C build-gcc -v
 
-    - name: Upload artifacts
     - uses: actions/upload-artifact@v3
       if: failure()
       with:
