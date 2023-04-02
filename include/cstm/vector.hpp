@@ -5,10 +5,14 @@
 
 namespace cstm
 {
+    template <class T>
     class vector
     {
     public:
+        using value_type = T;
         using size_type = std::size_t;
+        using reference = value_type&;
+        using const_reference = const value_type&;
 
         vector() : mSize(0), mData(nullptr)
         {
@@ -19,16 +23,16 @@ namespace cstm
         {
             if (mSize != 0)
             {
-                mData = new int[mSize];
+                mData = new T[mSize];
                 std::fill(mData, mData + mSize, 0);
             }
         }
 
-        vector(size_type size, int value) : mSize(size), mData(nullptr)
+        vector(size_type size, const T& value) : mSize(size), mData(nullptr)
         {
             if (mSize != 0)
             {
-                mData = new int[mSize];
+                mData = new T[mSize];
                 std::fill(mData, mData + mSize, value);
             }
         }
@@ -38,12 +42,12 @@ namespace cstm
             delete[] mData;
         }
 
-        int* data() noexcept
+        T* data() noexcept
         {
             return mData;
         }
 
-        const int* data() const noexcept
+        const T* data() const noexcept
         {
             return mData;
         }
@@ -55,6 +59,6 @@ namespace cstm
 
     private:
         size_type mSize;
-        int* mData;
+        T* mData;
     };
 }
