@@ -38,6 +38,21 @@ namespace cstm
             delete[] mData;
         }
 
+        int* data() noexcept
+        {
+            return mData;
+        }
+
+        const int* data() const noexcept
+        {
+            return mData;
+        }
+        
+        size_type size() const noexcept
+        {
+            return mSize;
+        }
+
     private:
         size_type mSize;
         int* mData;
