@@ -1,4 +1,4 @@
-project('cstm', 'cpp')
+project('cstm', 'cpp', default_options : ['cpp_std=c++20'])
 
 libcstm = static_library('cstm', 'include/cstm/vector.hpp')
 libcstm_dep = declare_dependency(include_directories : 'include', link_with : libcstm)
