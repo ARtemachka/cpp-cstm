@@ -20,8 +20,8 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: Install meson
-        run: pip3 install meson
+      - name: Install meson and ninja
+        run: pip3 install meson ninja
 
       - name: Setup meson
         run: meson setup build-gcc
