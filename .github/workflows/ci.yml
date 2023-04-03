@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
       
       - name: Install meson and ninja
-        run: pip3 install meson ninja
+        run: pip3 install meson ninja gcovr
 
       - name: Setup meson
         run: meson setup build-gcc -Db_coverage=true
