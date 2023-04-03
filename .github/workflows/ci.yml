@@ -42,7 +42,7 @@ jobs:
           path: build-gcc/meson-logs/testlog.txt
       
       - name: Codecov
-        uses: actions/codecov-action@v3
+        uses: codecov/codecov-action@v3.1.1
         with:
           directory: ./build-gcc/meson-logs/
           files: ./coverage.txt
