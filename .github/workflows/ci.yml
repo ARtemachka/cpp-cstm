@@ -42,10 +42,11 @@ jobs:
           path: build-gcc/meson-logs/testlog.txt
       
       - name: Codecov
-        uses: codecov/codecov-action@v3.1.1
-        with:
-          directory: ./build-gcc/meson-logs/
-          files: ./coverage.txt
-          fail_ci_if_error: true
-          flags: unittests
-          verbose: true
+        run: ls -la build-gcc/meson-logs/
+        # uses: codecov/codecov-action@v3.1.1
+        # with:
+        #   directory: ./build-gcc/meson-logs/
+        #   files: ./coverage.txt
+        #   fail_ci_if_error: true
+        #   flags: unittests
+        #   verbose: true
