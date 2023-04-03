@@ -29,6 +29,13 @@ TEST(VectorTest, Construction)
     }
 
     {
+        cstm::vector<int> v(0, 5);
+
+        EXPECT_TRUE(v.size() == 0);
+        EXPECT_TRUE(v.data() == nullptr);
+    }
+
+    {
         cstm::vector<int> v(10, 5);
 
         EXPECT_TRUE(v.size() == 10);
