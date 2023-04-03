@@ -45,11 +45,10 @@ jobs:
         run: ninja coverage-text -C build-gcc -v
       
       - name: Codecov
-        run: ls -la build-gcc/meson-logs/
-        # uses: codecov/codecov-action@v3.1.1
-        # with:
-        #   directory: ./build-gcc/meson-logs/
-        #   files: ./coverage.txt
-        #   fail_ci_if_error: true
-        #   flags: unittests
-        #   verbose: true
+        uses: codecov/codecov-action@v3.1.1
+        with:
+          directory: ./build-gcc/meson-logs/
+          files: ./coverage.txt
+          fail_ci_if_error: true
+          flags: unittests
+          verbose: true
