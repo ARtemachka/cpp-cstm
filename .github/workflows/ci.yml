@@ -42,7 +42,7 @@ jobs:
           path: build-gcc/meson-logs/testlog.txt
       
       - name: Generate code coverage report
-        run: ninja coverage-text -C build-gcc -v
+        run: ninja coverage-xml -C build-gcc -v
       
       - name: Codecov
         uses: codecov/codecov-action@v3.1.1
