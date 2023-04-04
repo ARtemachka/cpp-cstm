@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
-#include <limits>
 
 TEST(VectorTest, Construction)
 {
@@ -11,6 +10,8 @@ TEST(VectorTest, Construction)
 
         EXPECT_TRUE(v.size() == 0);
         EXPECT_TRUE(v.data() == nullptr);
+        EXPECT_TRUE(v.begin() == v.end());
+        EXPECT_TRUE(v.cbegin() == v.cend());
     }
 
     {
@@ -18,6 +19,8 @@ TEST(VectorTest, Construction)
 
         EXPECT_TRUE(v.size() == 0);
         EXPECT_TRUE(v.data() == nullptr);
+        EXPECT_TRUE(v.begin() == v.end());
+        EXPECT_TRUE(v.cbegin() == v.cend());
     }
 
     {
@@ -25,6 +28,10 @@ TEST(VectorTest, Construction)
 
         EXPECT_TRUE(v.size() == 10);
         EXPECT_TRUE(v.data() != nullptr);
+        EXPECT_TRUE(v.begin() != v.end());
+        EXPECT_TRUE(v.cbegin() != v.cend());
+        EXPECT_TRUE(*v.begin() == 0);
+        EXPECT_TRUE(*v.cbegin() == 0);
         EXPECT_TRUE(std::all_of(v.data(), v.data() + v.size(), [](int n) { return n == 0; }));
     }
 
@@ -33,6 +40,8 @@ TEST(VectorTest, Construction)
 
         EXPECT_TRUE(v.size() == 0);
         EXPECT_TRUE(v.data() == nullptr);
+        EXPECT_TRUE(v.begin() == v.end());
+        EXPECT_TRUE(v.cbegin() == v.cend());
     }
 
     {
@@ -40,6 +49,10 @@ TEST(VectorTest, Construction)
 
         EXPECT_TRUE(v.size() == 10);
         EXPECT_TRUE(v.data() != nullptr);
+        EXPECT_TRUE(v.begin() != v.end());
+        EXPECT_TRUE(v.cbegin() != v.cend());
+        EXPECT_TRUE(*v.begin() == 5);
+        EXPECT_TRUE(*v.cbegin() == 5);
         EXPECT_TRUE(std::all_of(v.data(), v.data() + v.size(), [](int n) { return n == 5; }));
     }
 }
