@@ -81,6 +81,11 @@ namespace cstm
             return mData;
         }
 
+        bool empty() const noexcept
+        {
+            return mSize == 0;
+        }
+
         iterator end() noexcept
         {
             return mData + mSize;
