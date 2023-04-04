@@ -61,4 +61,24 @@ TEST(VectorTest, Construction)
         EXPECT_TRUE(*v.cbegin() == 5);
         EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 5; }));
     }
+
+    {
+        cstm::vector<int> v({});
+
+        EXPECT_TRUE(v.size() == 0);
+        EXPECT_TRUE(v.data() == nullptr);
+        EXPECT_TRUE(v.begin() == v.end());
+        EXPECT_TRUE(v.cbegin() == v.cend());
+    }
+
+    {
+        cstm::vector<int> v({ 1, 2, 3, 4, 5 });
+
+        EXPECT_TRUE(v.size() == 5);
+        EXPECT_TRUE(v.data() != nullptr);
+        EXPECT_TRUE(v.begin() != v.end());
+        EXPECT_TRUE(v.cbegin() != v.cend());
+        EXPECT_TRUE(*v.begin() == 1);
+        EXPECT_TRUE(*v.cbegin() == 1);
+    }
 }

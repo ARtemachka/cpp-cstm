@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <initializer_list>
+#include <iterator>
 
 namespace cstm
 {
@@ -36,6 +38,21 @@ namespace cstm
             {
                 mData = new T[mSize];
                 std::fill(mData, mData + mSize, value);
+            }
+        }
+
+        vector(std::initializer_list<T> init) : mSize(0), mData(nullptr)
+        {
+            if (init.size() != 0)
+            {
+                mData = new int[init.size()];
+
+                for (auto it = init.begin(); it != init.end(); ++it)
+                {
+                    mData[std::distance(init.begin(), it)] = *it;
+                }
+
+                mSize = init.size();
             }
         }
 
