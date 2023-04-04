@@ -94,6 +94,10 @@ TEST(VectorTest, ElementAccess)
         cstm::vector<int> v;
 
         EXPECT_THROW(v.at(0), std::out_of_range);
+
+        const cstm::vector<int> cv;
+
+        EXPECT_THROW(v.at(0), std::out_of_range);
     }
 
     {
@@ -102,17 +106,37 @@ TEST(VectorTest, ElementAccess)
         EXPECT_NO_THROW(v.at(0));
         EXPECT_EQ(v[0], 0);
         EXPECT_THROW(v.at(1), std::out_of_range);
+
+        const cstm::vector<int> cv(1);
+
+        EXPECT_NO_THROW(cv.at(0));
+        EXPECT_EQ(cv[0], 0);
+        EXPECT_THROW(cv.at(1), std::out_of_range);
     }
 
     {
-        cstm::vector<int> v({ 1, 2, 3, 4, 5});
-
-        for (cstm::vector<int>::size_type i = 0; i < v.size(); ++i)
         {
-            EXPECT_NO_THROW(v.at(i));
-            EXPECT_EQ(v[i], i + 1);
+            cstm::vector<int> v({ 1, 2, 3, 4, 5});
+
+            for (cstm::vector<int>::size_type i = 0; i < v.size(); ++i)
+            {
+                EXPECT_NO_THROW(v.at(i));
+                EXPECT_EQ(v[i], i + 1);
+            }
+
+            EXPECT_THROW(v.at(5), std::out_of_range);
         }
 
-        EXPECT_THROW(v.at(5), std::out_of_range);
+        {
+            const cstm::vector<int> cv({ 1, 2, 3, 4, 5});
+
+            for (cstm::vector<int>::size_type i = 0; i < cv.size(); ++i)
+            {
+                EXPECT_NO_THROW(cv.at(i));
+                EXPECT_EQ(cv[i], i + 1);
+            }
+
+            EXPECT_THROW(cv.at(5), std::out_of_range);
+        }
     }
 }
