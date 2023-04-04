@@ -12,6 +12,12 @@ TEST(VectorTest, Construction)
         EXPECT_TRUE(v.data() == nullptr);
         EXPECT_TRUE(v.begin() == v.end());
         EXPECT_TRUE(v.cbegin() == v.cend());
+
+        const cstm::vector<int> cv;
+
+        EXPECT_TRUE(cv.size() == 0);
+        EXPECT_TRUE(cv.data() == nullptr);
+        EXPECT_TRUE(cv.cbegin() == v.cend());
     }
 
     {
