@@ -10,36 +10,36 @@ TEST(VectorTest, Construction)
         cstm::vector<int> v;
 
         EXPECT_TRUE(v.empty());
-        EXPECT_TRUE(v.data() == nullptr);
-        EXPECT_TRUE(v.begin() == v.end());
-        EXPECT_TRUE(v.cbegin() == v.cend());
+        EXPECT_EQ(v.data(), nullptr);
+        EXPECT_EQ(v.begin(), v.end());
+        EXPECT_EQ(v.cbegin(), v.cend());
 
         const cstm::vector<int> cv;
 
         EXPECT_TRUE(cv.empty());
-        EXPECT_TRUE(cv.data() == nullptr);
-        EXPECT_TRUE(cv.cbegin() == v.cend());
+        EXPECT_EQ(cv.data(), nullptr);
+        EXPECT_EQ(cv.cbegin(), v.cend());
     }
 
     {
         cstm::vector<int> v(0);
 
         EXPECT_TRUE(v.empty());
-        EXPECT_TRUE(v.data() == nullptr);
-        EXPECT_TRUE(v.begin() == v.end());
-        EXPECT_TRUE(v.cbegin() == v.cend());
+        EXPECT_EQ(v.data(), nullptr);
+        EXPECT_EQ(v.begin(), v.end());
+        EXPECT_EQ(v.cbegin(), v.cend());
     }
 
     {
         cstm::vector<int> v(10);
 
-        EXPECT_TRUE(v.empty() == false);
-        EXPECT_TRUE(v.size() == 10);
-        EXPECT_TRUE(v.data() != nullptr);
-        EXPECT_TRUE(v.begin() != v.end());
-        EXPECT_TRUE(v.cbegin() != v.cend());
-        EXPECT_TRUE(*v.begin() == 0);
-        EXPECT_TRUE(*v.cbegin() == 0);
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 10);
+        EXPECT_NE(v.data(), nullptr);
+        EXPECT_NE(v.begin(), v.end());
+        EXPECT_NE(v.cbegin(), v.cend());
+        EXPECT_EQ(*v.begin(), 0);
+        EXPECT_EQ(*v.cbegin(), 0);
         EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 0; }));
     }
 
@@ -47,22 +47,22 @@ TEST(VectorTest, Construction)
         cstm::vector<int> v(0, 5);
 
         EXPECT_TRUE(v.empty());
-        EXPECT_TRUE(v.size() == 0);
-        EXPECT_TRUE(v.data() == nullptr);
-        EXPECT_TRUE(v.begin() == v.end());
-        EXPECT_TRUE(v.cbegin() == v.cend());
+        EXPECT_EQ(v.size(), 0);
+        EXPECT_EQ(v.data(), nullptr);
+        EXPECT_EQ(v.begin(), v.end());
+        EXPECT_EQ(v.cbegin(), v.cend());
     }
 
     {
         cstm::vector<int> v(10, 5);
 
-        EXPECT_TRUE(v.empty() == false);
-        EXPECT_TRUE(v.size() == 10);
-        EXPECT_TRUE(v.data() != nullptr);
-        EXPECT_TRUE(v.begin() != v.end());
-        EXPECT_TRUE(v.cbegin() != v.cend());
-        EXPECT_TRUE(*v.begin() == 5);
-        EXPECT_TRUE(*v.cbegin() == 5);
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 10);
+        EXPECT_NE(v.data(), nullptr);
+        EXPECT_NE(v.begin(), v.end());
+        EXPECT_NE(v.cbegin(), v.cend());
+        EXPECT_EQ(*v.begin(), 5);
+        EXPECT_EQ(*v.cbegin(), 5);
         EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 5; }));
     }
 
@@ -70,21 +70,21 @@ TEST(VectorTest, Construction)
         cstm::vector<int> v({});
 
         EXPECT_TRUE(v.empty());
-        EXPECT_TRUE(v.data() == nullptr);
-        EXPECT_TRUE(v.begin() == v.end());
-        EXPECT_TRUE(v.cbegin() == v.cend());
+        EXPECT_EQ(v.data(), nullptr);
+        EXPECT_EQ(v.begin(), v.end());
+        EXPECT_EQ(v.cbegin(), v.cend());
     }
 
     {
         cstm::vector<int> v({ 1, 2, 3, 4, 5 });
 
-        EXPECT_TRUE(v.empty() == false);
-        EXPECT_TRUE(v.size() == 5);
-        EXPECT_TRUE(v.data() != nullptr);
-        EXPECT_TRUE(v.begin() != v.end());
-        EXPECT_TRUE(v.cbegin() != v.cend());
-        EXPECT_TRUE(*v.begin() == 1);
-        EXPECT_TRUE(*v.cbegin() == 1);
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 5);
+        EXPECT_NE(v.data(), nullptr);
+        EXPECT_NE(v.begin(), v.end());
+        EXPECT_NE(v.cbegin(), v.cend());
+        EXPECT_EQ(*v.begin(), 1);
+        EXPECT_EQ(*v.cbegin(), 1);
     }
 }
 
