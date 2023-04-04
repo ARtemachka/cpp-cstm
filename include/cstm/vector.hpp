@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <initializer_list>
 #include <iterator>
+#include <stdexcept>
 
 namespace cstm
 {
@@ -61,6 +62,26 @@ namespace cstm
             delete[] mData;
         }
 
+        reference at(size_type pos)
+        {
+            if (pos >= mSize)
+            {
+                throw std::out_of_range("");
+            }
+
+            return mData[pos];
+        }
+
+        const_reference at(size_type pos) const
+        {
+            if (pos >= mSize)
+            {
+                throw std::out_of_range("");
+            }
+
+            return mData[pos];
+        }
+
         iterator begin() noexcept
         {
             return mData;
@@ -99,6 +120,16 @@ namespace cstm
         size_type size() const noexcept
         {
             return mSize;
+        }
+
+        reference operator[](size_type pos)
+        {
+            return mData[pos];
+        }
+
+        const_reference operator[](size_type pos) const
+        {
+            return mData[pos];
         }
 
     private:
