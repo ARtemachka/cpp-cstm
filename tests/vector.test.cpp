@@ -32,7 +32,7 @@ TEST(VectorTest, Construction)
         EXPECT_TRUE(v.cbegin() != v.cend());
         EXPECT_TRUE(*v.begin() == 0);
         EXPECT_TRUE(*v.cbegin() == 0);
-        EXPECT_TRUE(std::all_of(v.data(), v.data() + v.size(), [](int n) { return n == 0; }));
+        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 0; }));
     }
 
     {
@@ -53,6 +53,6 @@ TEST(VectorTest, Construction)
         EXPECT_TRUE(v.cbegin() != v.cend());
         EXPECT_TRUE(*v.begin() == 5);
         EXPECT_TRUE(*v.cbegin() == 5);
-        EXPECT_TRUE(std::all_of(v.data(), v.data() + v.size(), [](int n) { return n == 5; }));
+        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 5; }));
     }
 }
