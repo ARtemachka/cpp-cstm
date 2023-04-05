@@ -113,6 +113,13 @@ namespace cstm
             return mData;
         }
 
+        void clear() noexcept
+        {
+            delete[] mData;
+            mData = nullptr;
+            mSize = 0;
+        }
+
         T* data() noexcept
         {
             return mData;

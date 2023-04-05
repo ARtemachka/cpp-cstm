@@ -179,3 +179,21 @@ TEST(VectorTest, ElementAccess)
         }
     }
 }
+
+TEST(VectorTest, Clear)
+{
+    cstm::vector<int> v({ 1, 2, 3, 4, 5 });
+
+    EXPECT_FALSE(v.empty());
+    EXPECT_EQ(v.size(), 5);
+    EXPECT_NE(v.data(), nullptr);
+    EXPECT_NE(v.begin(), v.end());
+    EXPECT_NE(v.cbegin(), v.cend());
+
+    v.clear();
+
+    EXPECT_TRUE(v.empty());
+    EXPECT_EQ(v.data(), nullptr);
+    EXPECT_EQ(v.begin(), v.end());
+    EXPECT_EQ(v.cbegin(), v.cend());
+}
