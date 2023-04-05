@@ -72,7 +72,7 @@ namespace cstm
             }
         }
 
-        vector(vector&& other) : mSize(other.size()), mData(other.mData)
+        vector(vector&& other) : mSize(other.mSize), mData(other.mData)
         {
             other.mSize = 0;
             other.mData = nullptr;
