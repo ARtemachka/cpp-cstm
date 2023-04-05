@@ -61,15 +61,21 @@ namespace cstm
         {
             if (!other.empty())
             {
-                mData = new T[other.size()];
+                mData = new T[other.mSize];
 
-                for (size_type i = 0; i < other.size(); ++i)
+                for (size_type i = 0; i < other.mSize; ++i)
                 {
                     mData[i] = other[i];
                 }
 
-                mSize = other.size();
+                mSize = other.mSize;
             }
+        }
+
+        vector(vector&& other) : mSize(other.size()), mData(other.mData)
+        {
+            other.mSize = 0;
+            other.mData = nullptr;
         }
 
         ~vector()
