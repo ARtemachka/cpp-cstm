@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <ranges>
 #include <stdexcept>
 
 TEST(VectorTest, Construction)
@@ -85,6 +86,28 @@ TEST(VectorTest, Construction)
         EXPECT_NE(v.cbegin(), v.cend());
         EXPECT_EQ(*v.begin(), 1);
         EXPECT_EQ(*v.cbegin(), 1);
+    }
+
+    {
+        cstm::vector<int> v1;
+        cstm::vector<int> v2(v1);
+
+        EXPECT_TRUE(v2.empty());
+        EXPECT_EQ(v2.data(), nullptr);
+        EXPECT_EQ(v2.begin(), v2.end());
+        EXPECT_EQ(v2.cbegin(), v2.cend());
+    }
+
+    {
+        cstm::vector<int> v1({ 1, 2, 3, 4, 5});
+        cstm::vector<int> v2(v1);
+
+        EXPECT_FALSE(v2.empty());
+        EXPECT_EQ(v1.size(), v2.size());
+        EXPECT_NE(v2.data(), nullptr);
+        EXPECT_NE(v2.begin(), v2.end());
+        EXPECT_NE(v2.cbegin(), v2.cend());
+        EXPECT_TRUE(std::ranges::equal(v1, v2));
     }
 }
 

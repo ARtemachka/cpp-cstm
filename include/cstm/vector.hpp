@@ -57,6 +57,21 @@ namespace cstm
             }
         }
 
+        vector(const vector& other) : mSize(0), mData(nullptr)
+        {
+            if (!other.empty())
+            {
+                mData = new int[other.size()];
+
+                for (size_type i = 0; i < other.size(); ++i)
+                {
+                    mData[i] = other[i];
+                }
+
+                mSize = other.size();
+            }
+        }
+
         ~vector()
         {
             delete[] mData;
