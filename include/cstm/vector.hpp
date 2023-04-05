@@ -46,7 +46,7 @@ namespace cstm
         {
             if (init.size() != 0)
             {
-                mData = new int[init.size()];
+                mData = new T[init.size()];
 
                 for (auto it = init.begin(); it != init.end(); ++it)
                 {
@@ -61,7 +61,7 @@ namespace cstm
         {
             if (!other.empty())
             {
-                mData = new int[other.size()];
+                mData = new T[other.size()];
 
                 for (size_type i = 0; i < other.size(); ++i)
                 {
