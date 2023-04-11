@@ -5,6 +5,56 @@
 #include <ranges>
 #include <stdexcept>
 
+TEST(VectorTest, AssignmentOperator)
+{
+    {
+        {
+            cstm::vector<int> v1;
+            cstm::vector<int> v2{ 4, 4, 4, 4 };
+            v1 = v2;
+
+            EXPECT_FALSE(v1.empty());
+            EXPECT_FALSE(v2.empty());
+            EXPECT_EQ(v1.size(), v2.size());
+            EXPECT_TRUE(std::ranges::equal(v1, v2));
+        }
+
+        {
+            cstm::vector<int> v{ 4, 4, 4, 4 };
+            v = v;
+
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 4);
+            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 4; }));
+        }
+    }
+
+    {
+        {
+            cstm::vector<int> v1;
+            cstm::vector<int> v2{ 4, 4, 4, 4 };
+
+            int* data = v2.data();
+            v1 = std::move(v2);
+
+            EXPECT_FALSE(v1.empty());
+            EXPECT_TRUE(v2.empty());
+            EXPECT_EQ(v1.size(), 4);
+            EXPECT_EQ(v1.data(), data);
+            EXPECT_TRUE(std::all_of(v1.cbegin(), v1.cend(), [](int n){ return n == 4; }));
+        }
+
+        {
+            cstm::vector<int> v{ 4, 4, 4, 4 };
+            v = std::move(v);
+
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 4);
+            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 4; }));
+        }
+    }
+}
+
 TEST(VectorTest, Construction)
 {
     {

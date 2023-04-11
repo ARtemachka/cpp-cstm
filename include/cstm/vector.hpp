@@ -75,10 +75,54 @@ namespace cstm
             }
         }
 
-        vector(vector&& other) : mSize(other.mSize), mData(other.mData)
+        vector(vector&& other) noexcept : mSize(other.mSize), mData(other.mData)
         {
             other.mSize = 0;
             other.mData = nullptr;
+        }
+
+        // TODO: copy and swap
+        vector& operator=(const vector& other)
+        {
+            if (this == &other)
+            {
+                return *this;
+            }
+
+            mSize = 0;
+            delete[] mData;
+            mData = nullptr;
+
+            if (!other.empty())
+            {
+                mData = new T[other.size()];
+
+                for (size_type i = 0; i < other.size(); ++i)
+                {
+                    mData[i] = other[i];
+                }
+
+                mSize = other.size();
+            }
+
+            return *this;
+        }
+
+        vector& operator=(vector&& other) noexcept
+        {
+            if (this == &other)
+            {
+                return *this;
+            }
+
+            delete[] mData;
+            mSize = other.mSize;
+            mData = other.mData;
+
+            other.mSize = 0;
+            other.mData = nullptr;
+
+            return *this;
         }
 
         ~vector()
