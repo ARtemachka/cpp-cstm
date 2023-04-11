@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cstm/concepts.hpp"
+
 #include <algorithm>
 #include <cstddef>
 #include <initializer_list>
@@ -8,7 +10,8 @@
 
 namespace cstm
 {
-    template <class T>
+    template <typename T>
+        requires cstm::destructible_non_ref<T>
     class vector
     {
     public:
