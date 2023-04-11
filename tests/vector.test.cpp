@@ -68,7 +68,7 @@ TEST(VectorTest, Construction)
     }
 
     {
-        cstm::vector<int> v({});
+        cstm::vector<int> v{};
 
         EXPECT_TRUE(v.empty());
         EXPECT_EQ(v.data(), nullptr);
@@ -77,7 +77,7 @@ TEST(VectorTest, Construction)
     }
 
     {
-        cstm::vector<int> v({ 1, 2, 3, 4, 5 });
+        cstm::vector<int> v{ 1, 2, 3, 4, 5 };
 
         EXPECT_FALSE(v.empty());
         EXPECT_EQ(v.size(), 5);
@@ -99,7 +99,7 @@ TEST(VectorTest, Construction)
     }
 
     {
-        cstm::vector<int> v1({ 1, 2, 3, 4, 5 });
+        cstm::vector<int> v1{ 1, 2, 3, 4, 5 };
         cstm::vector<int> v2(v1);
 
         EXPECT_FALSE(v2.empty());
@@ -111,7 +111,7 @@ TEST(VectorTest, Construction)
     }
 
     {
-        cstm::vector<int> v1({ 1, 2, 3, 4, 5 });
+        cstm::vector<int> v1{ 1, 2, 3, 4, 5 };
         cstm::vector<int> v2(std::move(v1));
 
         EXPECT_TRUE(v1.empty());
@@ -155,7 +155,7 @@ TEST(VectorTest, ElementAccess)
 
     {
         {
-            cstm::vector<int> v({ 1, 2, 3, 4, 5});
+            cstm::vector<int> v{ 1, 2, 3, 4, 5};
 
             for (cstm::vector<int>::size_type i = 0; i < v.size(); ++i)
             {
@@ -167,7 +167,7 @@ TEST(VectorTest, ElementAccess)
         }
 
         {
-            const cstm::vector<int> cv({ 1, 2, 3, 4, 5});
+            const cstm::vector<int> cv{ 1, 2, 3, 4, 5};
 
             for (cstm::vector<int>::size_type i = 0; i < cv.size(); ++i)
             {
@@ -182,7 +182,7 @@ TEST(VectorTest, ElementAccess)
 
 TEST(VectorTest, Clear)
 {
-    cstm::vector<int> v({ 1, 2, 3, 4, 5 });
+    cstm::vector<int> v{ 1, 2, 3, 4, 5 };
 
     EXPECT_FALSE(v.empty());
     EXPECT_EQ(v.size(), 5);
