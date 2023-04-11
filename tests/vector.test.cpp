@@ -27,6 +27,17 @@ TEST(VectorTest, AssignmentOperator)
             EXPECT_EQ(v.size(), 4);
             EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 4; }));
         }
+
+        {
+            cstm::vector<int> v1;
+            cstm::vector<int> v2;
+            v1 = v2;
+
+            EXPECT_TRUE(v1.empty());
+            EXPECT_TRUE(v2.empty());
+            EXPECT_EQ(v1.data(), nullptr);
+            EXPECT_EQ(v2.data(), nullptr);
+        }
     }
 
     {
