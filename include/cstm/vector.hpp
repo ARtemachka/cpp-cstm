@@ -245,6 +245,27 @@ namespace cstm
             return mData[pos];
         }
 
+        vector& operator=(std::initializer_list<T> ilist)
+        {
+            delete[] mData;
+            mData = nullptr;
+            mSize = 0;
+
+            if (ilist.size() != 0)
+            {
+                mData = new T[ilist.size()];
+
+                for (auto it = ilist.begin(); it != ilist.end(); ++it)
+                {
+                    mData[std::distance(ilist.begin(), it)] = *it;
+                }
+
+                mSize = ilist.size();
+            }
+
+            return *this;
+        }
+
     private:
         size_type mSize;
         T* mData;

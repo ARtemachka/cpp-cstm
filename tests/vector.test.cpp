@@ -64,6 +64,26 @@ TEST(VectorTest, AssignmentOperator)
             EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 4; }));
         }
     }
+
+    {
+        {
+            cstm::vector<int> v;
+            v = { 5, 5, 5, 5, 5};
+
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 5);
+            EXPECT_NE(v.data(), nullptr);
+            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 5; }));
+        }
+
+        {
+            cstm::vector<int> v;
+            v = {};
+
+            EXPECT_TRUE(v.empty());
+            EXPECT_EQ(v.data(), nullptr);
+        }
+    }
 }
 
 TEST(VectorTest, Construction)
