@@ -86,6 +86,44 @@ namespace cstm
             delete[] mData;
         }
 
+        void assign(size_type count, const T& value)
+        {
+            mSize = 0;
+            delete[] mData;
+            mData = nullptr;
+
+            if (count != 0)
+            {
+                mData = new T[count];
+
+                for (size_type i = 0; i < count; ++i)
+                {
+                    mData[i] = value;
+                }
+
+                mSize = count;
+            }
+        }
+
+        void assign(std::initializer_list<T> ilist)
+        {
+            mSize = 0;
+            delete[] mData;
+            mData = nullptr;
+
+            if (ilist.size() != 0)
+            {
+                mData = new T[ilist.size()];
+
+                for (auto it = ilist.begin(); it != ilist.end(); ++it)
+                {
+                    mData[std::distance(ilist.begin(), it)] = *it;
+                }
+
+                mSize = ilist.size();
+            }
+        }
+
         reference at(size_type pos)
         {
             if (pos >= mSize)

@@ -180,6 +180,53 @@ TEST(VectorTest, ElementAccess)
     }
 }
 
+TEST(VectorTest, Assign)
+{
+    {
+        cstm::vector<int> v;
+        v.assign(5, 10);
+
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 5);
+        EXPECT_NE(v.data(), nullptr);
+        EXPECT_NE(v.begin(), v.end());
+        EXPECT_NE(v.cbegin(), v.cend());
+        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 10; }));
+    }
+
+    {
+        cstm::vector<int> v;
+        v.assign(0, 10);
+
+        EXPECT_TRUE(v.empty());
+        EXPECT_EQ(v.data(), nullptr);
+        EXPECT_EQ(v.begin(), v.end());
+        EXPECT_EQ(v.cbegin(), v.cend());
+    }
+
+    {
+        cstm::vector<int> v;
+        v.assign({ 10, 10, 10, 10, 10 });
+
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 5);
+        EXPECT_NE(v.data(), nullptr);
+        EXPECT_NE(v.begin(), v.end());
+        EXPECT_NE(v.cbegin(), v.cend());
+        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 10; }));
+    }
+
+    {
+        cstm::vector<int> v;
+        v.assign({});
+
+        EXPECT_TRUE(v.empty());
+        EXPECT_EQ(v.data(), nullptr);
+        EXPECT_EQ(v.begin(), v.end());
+        EXPECT_EQ(v.cbegin(), v.cend());
+    }
+}
+
 TEST(VectorTest, Clear)
 {
     cstm::vector<int> v{ 1, 2, 3, 4, 5 };
