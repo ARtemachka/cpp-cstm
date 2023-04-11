@@ -188,6 +188,16 @@ namespace cstm
             return mData[pos];
         }
 
+        reference back()
+        {
+            return mData[mSize - 1];
+        }
+
+        const_reference back() const
+        {
+            return mData[mSize - 1];
+        }
+
         iterator begin() noexcept
         {
             return mData;
@@ -228,6 +238,16 @@ namespace cstm
         const_iterator cend() const noexcept
         {
             return mData + mSize;
+        }
+
+        reference front()
+        {
+            return mData[0];
+        }
+
+        const_reference front() const
+        {
+            return mData[0];
         }
         
         size_type size() const noexcept

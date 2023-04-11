@@ -225,12 +225,16 @@ TEST(VectorTest, ElementAccess)
 
         EXPECT_NO_THROW(v.at(0));
         EXPECT_EQ(v[0], 0);
+        EXPECT_EQ(v.front(), 0);
+        EXPECT_EQ(v.back(), 0);
         EXPECT_THROW(v.at(1), std::out_of_range);
 
         const cstm::vector<int> cv(1);
 
         EXPECT_NO_THROW(cv.at(0));
         EXPECT_EQ(cv[0], 0);
+        EXPECT_EQ(cv.front(), 0);
+        EXPECT_EQ(cv.back(), 0);
         EXPECT_THROW(cv.at(1), std::out_of_range);
     }
 
@@ -245,6 +249,8 @@ TEST(VectorTest, ElementAccess)
             }
 
             EXPECT_THROW(v.at(5), std::out_of_range);
+            EXPECT_EQ(v.front(), 1);
+            EXPECT_EQ(v.back(), 5);
         }
 
         {
@@ -257,6 +263,8 @@ TEST(VectorTest, ElementAccess)
             }
 
             EXPECT_THROW(cv.at(5), std::out_of_range);
+            EXPECT_EQ(cv.front(), 1);
+            EXPECT_EQ(cv.back(), 5);
         }
     }
 }
