@@ -68,7 +68,7 @@ TEST(VectorTest, Construction)
     }
 
     {
-        cstm::vector<int> v{};
+        cstm::vector<int> v({});
 
         EXPECT_TRUE(v.empty());
         EXPECT_EQ(v.data(), nullptr);
