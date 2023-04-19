@@ -388,3 +388,25 @@ TEST(VectorTest, PushBack)
         }
     }
 }
+
+TEST(VectorTest, Swap)
+{
+    {
+        cstm::vector<int> v1{ 1, 2, 3, 4, 5 };
+        cstm::vector<int> v2{ 1, 2, 3 };
+        v1.swap(v2);
+
+        EXPECT_EQ(v1.size(), 3);
+        EXPECT_EQ(v2.size(), 5);
+
+        for (int i = 0; i < 3; ++i)
+        {
+            EXPECT_EQ(v1[i], i + 1);
+        }
+
+        for (int i = 0; i < 5; ++i)
+        {
+            EXPECT_EQ(v2[i], i + 1);
+        }
+    }
+}

@@ -287,6 +287,12 @@ namespace cstm
             return mSize;
         }
 
+        void swap(vector<T>& other) noexcept
+        {
+            std::swap(mData, other.mData);
+            std::swap(mSize, other.mSize);
+        }
+
         reference operator[](size_type pos)
         {
             return mData[pos];
