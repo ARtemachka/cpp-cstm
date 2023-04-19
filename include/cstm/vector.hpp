@@ -249,7 +249,23 @@ namespace cstm
         {
             return mData[0];
         }
-        
+
+        void push_back(const T& value)
+        {
+            T* tmp = new T[mSize + 1];
+
+            for (size_type i = 0; i < mSize; ++i)
+            {
+                tmp[i] = mData[i];
+            }
+
+            tmp[mSize] = value;
+
+            delete[] mData;
+            mData = tmp;
+            mSize++;
+        }
+
         size_type size() const noexcept
         {
             return mSize;
