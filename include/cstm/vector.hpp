@@ -328,4 +328,10 @@ namespace cstm
         size_type mSize;
         T* mData;
     };
+
+    template <typename T>
+    void swap(vector<T>& lhs, vector<T>& rhs) noexcept
+    {
+        lhs.swap(rhs);
+    }
 }
