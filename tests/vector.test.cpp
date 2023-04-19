@@ -337,22 +337,46 @@ TEST(VectorTest, Clear)
 TEST(VectorTest, PushBack)
 {
     {
-        cstm::vector<int> v;
-        v.push_back(1);
+        {
+            cstm::vector<int> v;
+            v.push_back(1);
 
-        EXPECT_FALSE(v.empty());
-        EXPECT_EQ(v.size(), 1);
-        EXPECT_NO_THROW(v.at(0));
-        EXPECT_EQ(v[0], 1);
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 1);
+            EXPECT_NO_THROW(v.at(0));
+            EXPECT_EQ(v[0], 1);
+        }
+
+        {
+            cstm::vector<int> v{ 1, 2, 3, 4 };
+            v.push_back(5);
+
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 5);
+            EXPECT_NO_THROW(v.at(4));
+            EXPECT_EQ(v[4], 5);
+        }
     }
 
     {
-        cstm::vector<int> v{ 1, 2, 3, 4 };
-        v.push_back(5);
+        {
+            cstm::vector<int> v;
+            v.push_back(std::move(1));
 
-        EXPECT_FALSE(v.empty());
-        EXPECT_EQ(v.size(), 5);
-        EXPECT_NO_THROW(v.at(4));
-        EXPECT_EQ(v[4], 5);
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 1);
+            EXPECT_NO_THROW(v.at(0));
+            EXPECT_EQ(v[0], 1);
+        }
+
+        {
+            cstm::vector<int> v{ 1, 2, 3, 4 };
+            v.push_back(std::move(5));
+
+            EXPECT_FALSE(v.empty());
+            EXPECT_EQ(v.size(), 5);
+            EXPECT_NO_THROW(v.at(4));
+            EXPECT_EQ(v[4], 5);
+        }
     }
 }

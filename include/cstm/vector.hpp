@@ -266,6 +266,22 @@ namespace cstm
             mSize++;
         }
 
+        void push_back(T&& value)
+        {
+            T* tmp = new T[mSize + 1];
+
+            for (size_type i = 0; i < mSize; ++i)
+            {
+                tmp[i] = mData[i];
+            }
+
+            tmp[mSize] = std::move(value);
+
+            delete[] mData;
+            mData = tmp;
+            mSize++;
+        }
+
         size_type size() const noexcept
         {
             return mSize;
