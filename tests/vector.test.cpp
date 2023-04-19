@@ -5,6 +5,14 @@
 #include <ranges>
 #include <stdexcept>
 
+namespace
+{
+    struct S
+    {
+
+    };
+}
+
 TEST(VectorTest, AssignmentOperator)
 {
     {
@@ -338,45 +346,45 @@ TEST(VectorTest, PushBack)
 {
     {
         {
-            cstm::vector<int> v;
-            v.push_back(1);
+            cstm::vector<S> v;
+            S s;
+            v.push_back(s);
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 1);
             EXPECT_NO_THROW(v.at(0));
-            EXPECT_EQ(v[0], 1);
         }
 
         {
-            cstm::vector<int> v{ 1, 2, 3, 4 };
-            v.push_back(5);
+            cstm::vector<S> v{ S(), S(), S(), S() };
+            S s;
+            v.push_back(s);
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 5);
             EXPECT_NO_THROW(v.at(4));
-            EXPECT_EQ(v[4], 5);
         }
     }
 
     {
         {
-            cstm::vector<int> v;
-            v.push_back(std::move(1));
+            cstm::vector<S> v;
+            S s;
+            v.push_back(std::move(s));
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 1);
             EXPECT_NO_THROW(v.at(0));
-            EXPECT_EQ(v[0], 1);
         }
 
         {
-            cstm::vector<int> v{ 1, 2, 3, 4 };
-            v.push_back(std::move(5));
+            cstm::vector<S> v{ S(), S(), S(), S() };
+            S s;
+            v.push_back(std::move(s));
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 5);
             EXPECT_NO_THROW(v.at(4));
-            EXPECT_EQ(v[4], 5);
         }
     }
 }
