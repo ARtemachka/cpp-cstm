@@ -389,6 +389,48 @@ TEST(VectorTest, PushBack)
     }
 }
 
+TEST(VectorTest, Resize)
+{
+    {
+        cstm::vector<int> v{ 1, 2, 3, 4, 5 };
+        v.resize(3);
+
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 3);
+
+        for (int i = 0; i < 3; ++i)
+        {
+            EXPECT_EQ(v.at(i), i + 1);
+        }
+    }
+
+    {
+        cstm::vector<int> v{ 1, 2, 3, 4, 5 };
+        v.resize(10, 5);
+
+        EXPECT_FALSE(v.empty());
+        EXPECT_EQ(v.size(), 10);
+
+        for (int i = 0; i < 5; ++i)
+        {
+            EXPECT_EQ(v.at(i), i + 1);
+        }
+
+        for (int i = 5; i < 10; ++i)
+        {
+            EXPECT_EQ(v.at(i), 5);
+        }
+    }
+
+    {
+        cstm::vector<int> v{ 1, 2, 3, 4, 5 };
+        v.resize(0);
+
+        EXPECT_TRUE(v.empty());
+        EXPECT_EQ(v.size(), 0);
+    }
+}
+
 TEST(VectorTest, Swap)
 {
     {
@@ -401,12 +443,12 @@ TEST(VectorTest, Swap)
 
         for (int i = 0; i < 3; ++i)
         {
-            EXPECT_EQ(v1[i], i + 1);
+            EXPECT_EQ(v1.at(i), i + 1);
         }
 
         for (int i = 0; i < 5; ++i)
         {
-            EXPECT_EQ(v2[i], i + 1);
+            EXPECT_EQ(v2.at(i), i + 1);
         }
     }
 
@@ -420,12 +462,12 @@ TEST(VectorTest, Swap)
 
         for (int i = 0; i < 3; ++i)
         {
-            EXPECT_EQ(v1[i], i + 1);
+            EXPECT_EQ(v1.at(i), i + 1);
         }
 
         for (int i = 0; i < 5; ++i)
         {
-            EXPECT_EQ(v2[i], i + 1);
+            EXPECT_EQ(v2.at(i), i + 1);
         }
     }
 }

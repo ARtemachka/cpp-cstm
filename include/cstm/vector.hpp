@@ -282,6 +282,52 @@ namespace cstm
             mSize++;
         }
 
+        void resize(size_type count)
+        {
+            resize(count, T());
+        }
+
+        void resize(size_type count, const value_type& value)
+        {
+            if (count == 0)
+            {
+                clear();
+            }
+
+            if (count == mSize)
+            {
+                return;
+            }
+
+            T* tmp = new T[count];
+
+            if (mSize > count)
+            {
+                for (size_type i = 0; i < count; ++i)
+                {
+                    tmp[i] = mData[i];
+                }
+            }
+            else
+            {
+                size_type i = 0;
+
+                for (; i < mSize; ++i)
+                {
+                    tmp[i] = mData[i];
+                }
+
+                for (; i < count; ++i)
+                {
+                    tmp[i] = value;
+                }
+            }
+
+            delete[] mData;
+            mData = tmp;
+            mSize = count;
+        }
+
         size_type size() const noexcept
         {
             return mSize;
