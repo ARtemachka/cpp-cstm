@@ -1,7 +1,6 @@
 #pragma once
 
 #include "cstm/concepts.hpp"
-
 #include <algorithm>
 #include <cstddef>
 #include <initializer_list>
@@ -15,19 +14,22 @@ namespace cstm
     class vector
     {
     public:
-        using value_type = T;
-        using size_type = std::size_t;
-        using reference = value_type&;
+        using value_type      = T;
+        using size_type       = std::size_t;
+        using reference       = value_type&;
         using const_reference = const value_type&;
-        using iterator = T*;
-        using const_iterator = const T*;
+        using iterator        = T*;
+        using const_iterator  = const T*;
 
-        vector() : mSize(0), mData(nullptr)
+        vector()
+          : mSize(0),
+            mData(nullptr)
         {
-
         }
 
-        explicit vector(size_type size) : mSize(size), mData(nullptr)
+        explicit vector(size_type size)
+          : mSize(size),
+            mData(nullptr)
         {
             if (mSize != 0)
             {
@@ -36,7 +38,9 @@ namespace cstm
             }
         }
 
-        vector(size_type size, const T& value) : mSize(size), mData(nullptr)
+        vector(size_type size, const T& value)
+          : mSize(size),
+            mData(nullptr)
         {
             if (mSize != 0)
             {
@@ -45,7 +49,9 @@ namespace cstm
             }
         }
 
-        vector(std::initializer_list<T> init) : mSize(0), mData(nullptr)
+        vector(std::initializer_list<T> init)
+          : mSize(0),
+            mData(nullptr)
         {
             if (init.size() != 0)
             {
@@ -60,7 +66,9 @@ namespace cstm
             }
         }
 
-        vector(const vector& other) : mSize(0), mData(nullptr)
+        vector(const vector& other)
+          : mSize(0),
+            mData(nullptr)
         {
             if (!other.empty())
             {
@@ -75,7 +83,9 @@ namespace cstm
             }
         }
 
-        vector(vector&& other) noexcept : mSize(other.mSize), mData(other.mData)
+        vector(vector&& other) noexcept
+          : mSize(other.mSize),
+            mData(other.mData)
         {
             other.mSize = 0;
             other.mData = nullptr;
@@ -380,4 +390,4 @@ namespace cstm
     {
         lhs.swap(rhs);
     }
-}
+} // namespace cstm

@@ -1,6 +1,5 @@
 #include "cstm/vector.hpp"
 #include "gtest/gtest.h"
-
 #include <algorithm>
 #include <ranges>
 #include <stdexcept>
@@ -9,9 +8,8 @@ namespace
 {
     struct S
     {
-
     };
-}
+} // namespace
 
 TEST(VectorTest, AssignmentOperator)
 {
@@ -33,7 +31,7 @@ TEST(VectorTest, AssignmentOperator)
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 4);
-            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 4; }));
+            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 4; }));
         }
 
         {
@@ -60,7 +58,7 @@ TEST(VectorTest, AssignmentOperator)
             EXPECT_TRUE(v2.empty());
             EXPECT_EQ(v1.size(), 4);
             EXPECT_EQ(v1.data(), data);
-            EXPECT_TRUE(std::all_of(v1.cbegin(), v1.cend(), [](int n){ return n == 4; }));
+            EXPECT_TRUE(std::all_of(v1.cbegin(), v1.cend(), [](int n) { return n == 4; }));
         }
 
         {
@@ -69,19 +67,19 @@ TEST(VectorTest, AssignmentOperator)
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 4);
-            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 4; }));
+            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 4; }));
         }
     }
 
     {
         {
             cstm::vector<int> v;
-            v = { 5, 5, 5, 5, 5};
+            v = { 5, 5, 5, 5, 5 };
 
             EXPECT_FALSE(v.empty());
             EXPECT_EQ(v.size(), 5);
             EXPECT_NE(v.data(), nullptr);
-            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 5; }));
+            EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 5; }));
         }
 
         {
@@ -248,7 +246,7 @@ TEST(VectorTest, ElementAccess)
 
     {
         {
-            cstm::vector<int> v{ 1, 2, 3, 4, 5};
+            cstm::vector<int> v{ 1, 2, 3, 4, 5 };
 
             for (cstm::vector<int>::size_type i = 0; i < v.size(); ++i)
             {
@@ -262,7 +260,7 @@ TEST(VectorTest, ElementAccess)
         }
 
         {
-            const cstm::vector<int> cv{ 1, 2, 3, 4, 5};
+            const cstm::vector<int> cv{ 1, 2, 3, 4, 5 };
 
             for (cstm::vector<int>::size_type i = 0; i < cv.size(); ++i)
             {
@@ -288,7 +286,7 @@ TEST(VectorTest, Assign)
         EXPECT_NE(v.data(), nullptr);
         EXPECT_NE(v.begin(), v.end());
         EXPECT_NE(v.cbegin(), v.cend());
-        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 10; }));
+        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 10; }));
     }
 
     {
@@ -310,7 +308,7 @@ TEST(VectorTest, Assign)
         EXPECT_NE(v.data(), nullptr);
         EXPECT_NE(v.begin(), v.end());
         EXPECT_NE(v.cbegin(), v.cend());
-        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n){ return n == 10; }));
+        EXPECT_TRUE(std::all_of(v.cbegin(), v.cend(), [](int n) { return n == 10; }));
     }
 
     {

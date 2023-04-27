@@ -5,19 +5,15 @@ template <typename T>
     requires cstm::destructible_non_ref<T>
 struct S
 {
-
 };
 
 template <typename T>
-constexpr bool allowed = requires {
-    S<T>();
-};
+constexpr bool allowed = requires { S<T>(); };
 
 TEST(ConceptsTest, DestructibleNonRef)
 {
     struct WithDtor
     {
-
     };
 
     struct WithoutDtor
